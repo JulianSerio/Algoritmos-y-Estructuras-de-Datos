@@ -32,14 +32,22 @@ public class Transformacion {
 		return sum;
 		
 	}
-	public void imprimirArbol(BinaryTree<Integer> arbol) {
-		System.out.println(arbol.getData());
-		if (arbol.hasLeftChild()) {
-			this.imprimirArbol(arbol.getLeftChild());
+	public int recorrerArbol(BinaryTree<Integer> nodo) {
+		if (nodo.isLeaf()) {
+			int aux = nodo.getData();
+			nodo.setData(0);
+			return aux;
 		}
-		if (arbol.hasRightChild()) {
-			this.imprimirArbol(arbol.getRightChild());
-		}
+		int sumLeft = 0; int sumRight = 0;
+		if (nodo.hasLeftChild()) sumLeft = this.recorrerArbol(nodo.getLeftChild());
+		if (nodo.hasRightChild()) sumRight = this.recorrerArbol(nodo.getRightChild());
+		
+		int aux = nodo.getData();
+		nodo.setData(sumLeft + sumRight);
+		
+		return aux + sumLeft + sumRight;
+		
 	}
+	
 
 }
