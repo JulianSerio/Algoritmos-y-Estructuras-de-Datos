@@ -116,23 +116,56 @@ public class BinaryTree <T> {
     	return mirror;
     }
 
-	//QUE ME XPLIQUEN EL TEMA DE LOS NIVELES
+     public BinaryTree<T> espejo(){
+	BinaryTree<T> aux = this.getRightChild();
+	this.addRightChild(this.getLeftChild());
+	this.addLeftChild(aux);
+	if (this.hasLeftChild()) this.rightChild().espejo();
+	if (this.hasRightChild()) this.leftChild().espejo();
+	return this;
+     }
+	
+
 	public void entreNiveles(int n, int m){		
-		if (!this.isEmpty()) {
-			if ((n >= 0)&&(n <= m)) {
-				System.out.println(this.getData());
-				if (this.hasLeftChild()) {
-					this.getLeftChild().entreNiveles(n, m-1);
-				}
-				if (this.hasRightChild()) {
-					this.getRightChild().entreNiveles(n, m-1);
-				}
+		//Inicializar cola de tipo arbol
+		Queue<BinaryTree<T>> cola = new Queue<BinaryTree<T>>();
+		cola.add(this);
+		cola.add(null);
+		int nivel = 1;
+		//Mientras la cola no esta vacia
+		while (cola.isEmpty() && nivel <= m) {
+			BinaryTree<T> aux = cola.dequeue();
+			if (aux != null) {
+				//Si no es null imprimo
+				if (nivel >= n && nivel <= m) System.out.println(aux.getData());
+				if (this.hasLeftChild()) cola.add(this.getLeftChild());
+				if (this.hasRightChild()) cola.add(this.getRightChild());
+			}
+			else {
+				nivel++;
+				if (!cola.isEmpty()){
+					cola.add(null);
+				}	
 			}
 		}
+		
 	}
+
+
+
+
+
+
+
+
+
+
+
+	
+	
 	/*public void entreNiveles(int n, int m){
 		this.entreNivelesRecursivo(this,n,m);
-    }
+    	}
 	
     private void entreNivelesRecursivo(BinaryTree<T> arbol, int n, int m) {
     	// Obtener la altura del árbol
