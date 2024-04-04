@@ -10,9 +10,10 @@ public class Transformacion {
 	}
 	
 	public BinaryTree<Integer> suma(){
+		int aux = 0;
 		if (!this.tree.isEmpty())
-			this.recorrerArbol(this.arbol);
-		return arbol;
+			aux = this.recorrerArbol(this.arbol);
+		return aux;
 	}
 	
 	private int recorrerArbol(BinaryTree<Integer> nodo) {
