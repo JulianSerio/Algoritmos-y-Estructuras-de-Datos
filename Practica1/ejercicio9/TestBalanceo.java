@@ -5,9 +5,10 @@ import java.util.Stack;
 
 public class TestBalanceo {
 	public static void main (String args[]) {
-		//System.out.println("Ingrese cadena");
-		//Scanner in = new Scanner(System.in);
-		String cadena = "{()[()]}";		//in.toString();
+		System.out.println("Ingrese una cadena: ");
+		Scanner scan = new Scanner(System.in);
+		String cadena = scan.toString();
+		//PROBAR
 		char[] arreglo = cadena.toCharArray();
 		
 		Stack<Character> pila = new Stack<>();
