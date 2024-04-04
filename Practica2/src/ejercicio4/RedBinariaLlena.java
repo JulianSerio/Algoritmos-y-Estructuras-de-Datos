@@ -14,7 +14,7 @@ public class RedBinariaLlena {
 	}
 	
 	private int recorridoPreOrden(BinaryTree<Integer> nodo) {
-		if (nodo == null) {
+		if (nodo.isLeaf() {
 			return 0;
 		}
 		int suma = 0;
