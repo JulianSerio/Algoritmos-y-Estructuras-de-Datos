@@ -12,7 +12,8 @@ public class RedBinariaLlena {
 	public int retardoReenvio() {
 		return this.recorridoPreOrden(nodo);
 	}
-	
+	//ESTRATEGIA = Profundidad
+	//Revisar
 	private int recorridoPreOrden(BinaryTree<Integer> nodo) {
 		if (nodo.isLeaf() {
 			return 0;
