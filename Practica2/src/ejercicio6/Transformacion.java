@@ -10,24 +10,20 @@ public class Transformacion {
 	}
 	
 	public BinaryTree<Integer> suma(){
-		this.recorrerArbol(this.arbol);
+		if (!this.tree.isEmpty())
+			this.recorrerArbol(this.arbol);
 		return arbol;
 	}
 	
-	public int recorrerArbol(BinaryTree<Integer> nodo) {
-		if (nodo.isLeaf()) {
-			int aux = nodo.getData();
-			nodo.setData(0);
-			return aux;
-		}
-		int sumLeft = 0; int sumRight = 0;
-		if (nodo.hasLeftChild()) sumLeft = this.recorrerArbol(nodo.getLeftChild());
-		if (nodo.hasRightChild()) sumRight = this.recorrerArbol(nodo.getRightChild());
-		
-		int aux = nodo.getData();
-		nodo.setData(sumLeft + sumRight);
-		
-		return aux + sumLeft + sumRight;
+	private int recorrerArbol(BinaryTree<Integer> nodo) {
+		int oldValue = nodo.getData();
+		int newValue = 0;
+		if (!nodo.isLeaf()) {
+			if (nodo.hasLeftChild()) newValue += this.recorrerArbol(nodo.getLeftChild());
+			if (nodo.hasRightChild()) newValue += this.recorrerArbol(nodo.getRightChild());
+		}	
+		nodo.setData(newValue);
+		return newValue + oldValue;
 		
 	}
 	public void imprimirArbol(BinaryTree<Integer> arbol) {
