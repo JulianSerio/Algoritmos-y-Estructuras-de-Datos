@@ -7,7 +7,7 @@ public class TestBalanceo {
 	public static void main (String args[]) {
 		System.out.println("Ingrese una cadena: ");
 		Scanner scan = new Scanner(System.in);
-		String cadena = scan.toString();
+		String cadena = scan.next();
 		//PROBAR
 		char[] arreglo = cadena.toCharArray();
 		
