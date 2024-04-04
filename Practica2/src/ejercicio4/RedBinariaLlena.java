@@ -10,9 +10,7 @@ public class RedBinariaLlena {
 	}
 	
 	public int retardoReenvio() {
-		int suma = 0;
 		return this.recorridoPreOrden(nodo);
-		
 	}
 	
 	private int recorridoPreOrden(BinaryTree<Integer> nodo) {
